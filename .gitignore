@@ -1,0 +1,9 @@
+*.bin
+*.exe
+*
+!/**/
+!*.*
+.cph/
+.vscode/
+.pytest_cache/
+.DS_Store
