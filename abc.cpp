@@ -1,37 +1,56 @@
 #include<iostream>
-#include<algorithm>
+#include<string>
+
+using namespace std;
 
 int main() {
-    int largest, middle, smallest;
-    char curr;
+    int first, second, third;
+    string order;
 
-    std::cin >> largest;
-    std::cin >> middle;
-    if(middle > largest){
-        std::swap(largest, middle);
-    }
-
-    std::cin >> smallest;
-
-    if(smallest > largest){
-        std::swap(largest, smallest);
-    } 
-    if(smallest > middle){
-        std::swap(smallest, middle);
-    }
-
-    for(int i = 0; i < 3; i++){
-        std::cin >> curr;
-        switch(curr){
-            case 'A':
-                std::cout << smallest << " ";
-                break;
-            case 'B':
-                std::cout << middle << " ";
-                break;
-            case 'C':
-                std::cout << largest << " ";
-                break;
+    cin >> first >> second >> third >> order;
+    int largest, second_largest, smallest;
+    if(first > second) {
+        if(first > third) {
+            largest = first; 
+            if(second > third) {
+                second_largest = second;
+                smallest = third;
+            } else {
+                second_largest = third;
+                smallest = second;
+            }
+        } else {
+            largest = third;
+            second_largest = first;
+            smallest = second;
+        }
+    } else {
+        if(second > third) {
+            largest = second;
+            if(first > third) {
+                second_largest = first;
+                smallest = third;
+            } else {
+                second_largest = third;
+                smallest = first;
+            }
+        } else {
+            largest = third;
+            second_largest = second;
+            smallest = first;
         }
     }
+
+    for(int i = 0; i < order.length(); i++){
+        if(order[i] == 'A') {
+            cout << smallest << " ";
+        } else if(order[i] == 'B') {
+            cout << second_largest << " ";
+        } else {
+            cout << largest << " ";
+        }
+    } 
+
+    cout << endl;
 }
+
